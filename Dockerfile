@@ -5,7 +5,7 @@ MAINTAINER Remon Lam [remon@containerstack.io]
 ENV CONF_HOME     /var/atlassian/confluence
 ENV CONF_INSTALL  /opt/atlassian/confluence
 ENV CONF_VERSION  6.0.2
-ENV MYSQL_CONJ_VERSION  5.1.38
+ENV MYSQL_CONJ_VERSION  5.1.40
 
 
 ENV JAVA_CACERTS  $JAVA_HOME/jre/lib/security/cacerts
