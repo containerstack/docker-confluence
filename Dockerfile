@@ -9,7 +9,6 @@ ENV CERTIFICATE   $CONF_HOME/certificate
 ENV CONF_VERSION  6.0.1
 ENV MYSQL_CONJ_VERSION  5.1.38
 
-
 # Install Atlassian Confluence and hepler tools and setup initial home
 # directory structure.
 RUN set -x \
