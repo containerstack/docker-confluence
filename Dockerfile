@@ -4,12 +4,12 @@ MAINTAINER Remon Lam [remon@containerstack.io]
 # Setup useful environment variables
 ENV CONF_HOME     /var/atlassian/confluence
 ENV CONF_INSTALL  /opt/atlassian/confluence
-ENV CONF_VERSION  6.0.2
-ENV MYSQL_CONJ_VERSION  5.1.38
-
-
 ENV JAVA_CACERTS  $JAVA_HOME/jre/lib/security/cacerts
 ENV CERTIFICATE   $CONF_HOME/certificate
+# Check Confluence version @ https://confluence.atlassian.com/doc/confluence-release-notes-327.html
+ENV CONF_VERSION  6.0.3
+# Check Connector/J version @ http://dev.mysql.com/downloads/connector/j/
+ENV MYSQL_CONJ_VERSION  5.1.40
 
 # Install Atlassian Confluence and hepler tools and setup initial home
 # directory structure.
