@@ -10,6 +10,8 @@ ENV CERTIFICATE   $CONF_HOME/certificate
 ENV CONF_VERSION  6.0.3
 # Check Connector/J version @ http://dev.mysql.com/downloads/connector/j/
 ENV MYSQL_CONJ_VERSION  5.1.40
+ENV CONF_VERSION  6.0.2
+ENV MYSQL_CONJ_VERSION  5.1.40
 
 # Install Atlassian Confluence and hepler tools and setup initial home
 # directory structure.
