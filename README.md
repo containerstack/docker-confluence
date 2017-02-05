@@ -2,36 +2,55 @@
 
 # Atlassian Confluence in a Docker container
 
-This is a containerized installation of Atlassian Confluence with Docker, and it's a match made in heaven for us all to enjoy. The aim of this image is to keep the installation as straight forward as possible, but with a few Docker related twists. You can get started by clicking the appropriate link below and reading the documentation.
+This is a containerized installation of Atlassian Confluence with Docker.
+The aim of this image is to keep the installation easy and as straight forward as possible.
 
-* [Atlassian JIRA Core](https://cptactionhank.github.io/docker-atlassian-jira)
-* [Atlassian JIRA Software](https://cptactionhank.github.io/docker-atlassian-jira-software)
-* [Atlassian JIRA Service Desk](https://cptactionhank.github.io/docker-atlassian-service-desk)
-* [Atlassian Confluence](https://cptactionhank.github.io/docker-atlassian-confluence)
-* [Atlassian Bitbucket](https://cptactionhank.github.io/docker-atlassian-bitbucket)
-* [Atlassian Bamboo](https://cptactionhank.github.io/docker-atlassian-bamboo)
+It's possible to clone this repo and build the image on you're own machine, but if you think that's a waste of time ;-) there's a Automated Build in the Docker Hub that's based on this repo.
 
-If you want to help out, you can check out the contribution section further down.
 
-## I'm in the fast lane! Get me started
+* [Docker Hub - Automated Build](https://hub.docker.com/r/remonlam/confluence/)
+* [Atlassian Confluence latest build](https://confluence.atlassian.com/doc/confluence-release-notes-327.html)
+* [Oracle MySQL Connector J latest build](http://dev.mysql.com/downloads/connector/j/)
+* [Atlassian Confluence](https://www.atlassian.com/software/confluence)
+
+## Use the Automated Build image for a TEST deployment;
 
 To quickly get started running a Confluence instance, use the following command:
 ```bash
-docker run --detach --publish 8090:8090 cptactionhank/atlassian-confluence:latest
+docker run --detach --name confluence --publish 8090:8090 remonlam/confluence:latest
 ```
 
-Then simply navigate your preferred browser to `http://[dockerhost]:8090` and finish the configuration.
+Once the image has been downloaded and container is fully started (this could take a few minutes), browse to `http://[dockerhost]:8090` to finish the configuration and enter your trail/license key.
 
-## Contributions
+### What does all these options do?;
+detach          runs the container in the background
+name            gives the container a more useful name
+publish         publish a port from the container to the outside world (docker node [outside] / container [inside])
 
-This image has been created with the best intentions and an good understanding of Docker, but it should not be expected to be flawless. Should you be in the position to do so, I request that you help support this repository with best-practices and other additions.
 
-Travis CI and CircleCI has been configured to build the `Dockerfile` and run acceptance tests on the Atlassian Confluence image to ensure it is working.
+## Use the Automated Build image for a PRODUCTION deployment;
 
-Travis CI has additionally been configured to automatically deploy new version branches when successfully building a new version of Atlassian Confluence in the `master` branch and serves as the base. Furthermore an `eap` branch has been setup to automatically build and commit updates to ensure this branch contains the latest version of Atlassian Confluence Early Access Program.
+In order to make sure that what ever you or you're team is creating in Confluence is persistent even when the container is recreated it's useful to make the "/var/atlassian/confluence" directory persistent.
+```bash
+docker run --detach && \
+           --name confluence
+           --volume "/persistent/storage/atlassian/confluence:/var/atlassian/confluence"
+           --env "CATALINA_OPTS= -Xms512m -Xmx4g"
+           --publish 8090:8090
+           remonlam/confluence:latest
+```
 
-If you see out of date documentation, lack of tests, etc., you can help out by either
-- creating an issue and opening a discussion, or
-- sending a pull request with modifications (remember to read [contributing guide](https://github.com/cptactionhank/docker-atlassian-confluence/blob/master/CONTRIBUTING.md) before.)
+Once the image has been downloaded and container is fully started (this could take a few minutes), browse to `http://[dockerhost]:8090` to finish the configuration and enter your trail/license key.
 
-Continuous Integration and Continuous Delivery is made possible with the great services from [GitHub](https://github.com), [Travis CI](https://travis-ci.org/), and [CircleCI](https://circleci.com/) written in [Ruby](https://www.ruby-lang.org/), using [RSpec](http://rspec.info/), [Capybara](https://jnicklas.github.io/capybara/), and [PhantomJS](http://phantomjs.org/) frameworks.
+### What does all these options do?;
+detach          runs the container in the background
+name            gives the container a more useful name
+volume          maps a directory from the docker host inside the container
+env             sets environment variables (this case it's for setting the JVM minimum/maximum memory 512MB<->2GB)
+publish         publish a port from the container to the outside world (dockernode [outside] / container [inside])
+
+
+
+## Issues, PR's and discussion
+
+If you see an issues please create an [issue](https://github.com/remonlam/docker-confluence/issues/new) or even better fix it and create an [PR](https://github.com/remonlam/docker-confluence/compare) :-)
