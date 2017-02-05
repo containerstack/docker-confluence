@@ -50,7 +50,7 @@ Once the image has been downloaded and container is fully started (this could ta
 
 ### What does all these options do?;
 | Option| Description|
-| ------------- |:-------------:|
+| ------------- |:-------------|
 |detach|runs the container in the background|
 |name|gives the container a more useful name|
 volume|maps a directory from the docker host inside the container|
