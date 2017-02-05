@@ -17,10 +17,16 @@ It's possible to clone this repo and build the image on you're own machine, but 
 
 To quickly get started running a Confluence instance, use the following command:
 ```bash
+docker run --detach \
+           --name confluence \
+           --publish 8090:8090 \
+           remonlam/confluence:latest
 docker run --detach --name confluence --publish 8090:8090 remonlam/confluence:latest
 ```
 
 Once the image has been downloaded and container is fully started (this could take a few minutes), browse to `http://[dockerhost]:8090` to finish the configuration and enter your trail/license key.
+
+NOTE: It's not recommended to run Confluence this way because it does NOT have persistent storage, once the container is removed everything is gone!!
 
 ### What does all these options do?;
 detach          runs the container in the background
@@ -32,11 +38,11 @@ publish         publish a port from the container to the outside world (docker n
 
 In order to make sure that what ever you or you're team is creating in Confluence is persistent even when the container is recreated it's useful to make the "/var/atlassian/confluence" directory persistent.
 ```bash
-docker run --detach && \
-           --name confluence
-           --volume "/persistent/storage/atlassian/confluence:/var/atlassian/confluence"
-           --env "CATALINA_OPTS= -Xms512m -Xmx4g"
-           --publish 8090:8090
+docker run --detach \
+           --name confluence \
+           --volume "/persistent/storage/atlassian/confluence:/var/atlassian/confluence" \
+           --env "CATALINA_OPTS= -Xms512m -Xmx4g" \
+           --publish 8090:8090 \
            remonlam/confluence:latest
 ```
 
@@ -45,11 +51,11 @@ Once the image has been downloaded and container is fully started (this could ta
 ### What does all these options do?;
 | Option        | Description           |
 | ------------- |:-------------:|
-|detach|          runs the container in the background|
-|name|            gives the container a more useful name|
-volume|          maps a directory from the docker host inside the container|
-env|             sets environment variables (this case it's for setting the JVM minimum/maximum memory 512MB<->2GB)|
-publish|         publish a port from the container to the outside world (dockernode [outside] / container [inside])|
+|detach|runs the container in the background|
+|name|gives the container a more useful name|
+volume|maps a directory from the docker host inside the container|
+env|sets environment variables (this case it's for setting the JVM minimum/maximum memory 512MB<->2GB)|
+publish|publish a port from the container to the outside world (dockernode [outside] / container [inside])|
 
 
 
