@@ -7,11 +7,19 @@ The aim of this image is to keep the installation easy and as straight forward a
 
 It's possible to clone this repo and build the image on you're own machine, but if you think that's a waste of time ;-) there's a Automated Build in the Docker Hub that's based on this repo.
 
-
 * [Docker Hub - Automated Build](https://hub.docker.com/r/remonlam/confluence/)
 * [Atlassian Confluence latest build](https://confluence.atlassian.com/doc/confluence-release-notes-327.html)
 * [Oracle MySQL Connector J latest build](http://dev.mysql.com/downloads/connector/j/)
 * [Atlassian Confluence](https://www.atlassian.com/software/confluence)
+
+## Versions
+Currently this repo have the following versions;
+* 6.0.4 (latest)
+* 6.0.3
+* 6.0.2
+* 6.0.1
+
+Go to [Branches](https://github.com/remonlam/docker-confluence/branches) to see all different builds that are available.
 
 ## Use the Automated Build image for a TEST deployment;
 
@@ -21,7 +29,6 @@ docker run --detach \
            --name confluence \
            --publish 8090:8090 \
            remonlam/confluence:latest
-docker run --detach --name confluence --publish 8090:8090 remonlam/confluence:latest
 ```
 
 Once the image has been downloaded and container is fully started (this could take a few minutes), browse to `http://[dockerhost]:8090` to finish the configuration and enter your trail/license key.
@@ -51,11 +58,11 @@ Once the image has been downloaded and container is fully started (this could ta
 ### What does all these options do?;
 | Option| Description|
 | :------------- |:-------------|
-|**detach**|*runs the container in the background*|
-|**name**|*gives the container a more useful name*|
-|**volume**|*maps a directory from the docker host inside the container*|
-|**env**|*sets environment variables (this case it's for setting the JVM minimum/maximum memory 512MB<->2GB)*|
-|**publish**|*publish a port from the container to the outside world (dockernode [outside] / container [inside])*|
+|detach|*runs the container in the background*|
+|name|*gives the container a more useful name*|
+|volume|*maps a directory from the docker host inside the container*|
+|env|*sets environment variables (this case it's for setting the JVM minimum/maximum memory 512MB<->2GB)*|
+|publish|*publish a port from the container to the outside world (dockernode [outside] / container [inside])*|
 
 
 
