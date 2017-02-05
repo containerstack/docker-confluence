@@ -49,7 +49,7 @@ docker run --detach \
 Once the image has been downloaded and container is fully started (this could take a few minutes), browse to `http://[dockerhost]:8090` to finish the configuration and enter your trail/license key.
 
 ### What does all these options do?;
-| Option        | Description           |
+| Option| Description|
 | ------------- |:-------------:|
 |detach|runs the container in the background|
 |name|gives the container a more useful name|
