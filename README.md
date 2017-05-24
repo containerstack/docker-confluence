@@ -14,10 +14,8 @@ It's possible to clone this repo and build the image on you're own machine, but 
 
 ## Versions
 Currently this repo have the following versions;
-* 6.0.4 (latest)
-* 6.0.3
-* 6.0.2
-* 6.0.1
+* 6.2.0 (latest - not yet tested)
+* 6.0.7 (latest - tested)
 
 Go to [Branches](https://github.com/remonlam/docker-confluence/branches) to see all different builds that are available.
 
