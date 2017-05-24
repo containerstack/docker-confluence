@@ -8,7 +8,7 @@ ENV JAVA_CACERTS  $JAVA_HOME/jre/lib/security/cacerts
 ENV CERTIFICATE   $CONF_HOME/certificate
 # Check Confluence version @ https://confluence.atlassian.com/doc/confluence-release-notes-327.html
 ENV CONF_VERSION  6.2.0
-# Check Connector/J version @ http://dev.mysql.com/downloads/connector/j/ it should be 5.1.30
+# Check Connector/J version @ http://dev.mysql.com/downloads/connector/j/ it should be 5.1.30, testing with latest release
 ENV MYSQL_CONJ_VERSION  5.1.42
 
 # Install Atlassian Confluence and hepler tools and setup initial home
