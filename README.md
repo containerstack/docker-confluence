@@ -12,10 +12,15 @@ It's possible to clone this repo and build the image on you're own machine, but 
 * [Oracle MySQL Connector J latest build](http://dev.mysql.com/downloads/connector/j/)
 * [Atlassian Confluence](https://www.atlassian.com/software/confluence)
 
+## Git repos
+* [Atlassian Bitbucket](https://bitbucket.org/containerstack/docker-confluence)
+* [GitLab](https://gitlab.com/containerstack/docker-confluence)
+* [GitHub](https://github.com/containerstack/docker-confluence)
+
 ## Versions
 Currently this repo have the following versions;
-* 6.11.2 (latest - not yet tested)
-* 6.11.1 (latest - tested)
+* 6.12.0 (latest - not yet tested)
+* 6.11.2 (latest - tested)
 
 Go to [Branches](https://github.com/containerstack/docker-confluence/branches) to see all different builds that are available.
 
