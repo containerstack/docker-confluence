@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:8
 LABEL maintainer="Remon Lam <remon@containerstack.io>"
 
 # Setup useful environment variables
@@ -44,7 +44,7 @@ RUN set -x \
         --delete               "Server/Service/Engine/Host/Context/@debug" \
                                "${CONF_INSTALL}/conf/server.xml" \
     && touch -d "@0"           "${CONF_INSTALL}/conf/server.xml" \
-    #&& chown daemon:daemon     "${JAVA_CACERTS}"
+    && chown daemon:daemon     "${JAVA_CACERTS}"
 
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but
