@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:11
 LABEL maintainer="Remon Lam <remon@containerstack.io>"
 
 # Setup useful environment variables
@@ -9,7 +9,8 @@ ENV CERTIFICATE   $CONF_HOME/certificate
 # Check Confluence version @ https://confluence.atlassian.com/doc/confluence-release-notes-327.html
 ENV CONF_VERSION  6.12.0
 # Check Connector/J version @ http://dev.mysql.com/downloads/connector/j/ it should be 5.1.30, testing with latest release
-ENV MYSQL_CONJ_VERSION  5.1.42
+#ENV MYSQL_CONJ_VERSION  5.1.42
+ENV MYSQL_CONJ_VERSION  8.0.12
 
 # Install Atlassian Confluence and hepler tools and setup initial home
 # directory structure.
@@ -22,7 +23,7 @@ RUN set -x \
     && chown daemon:daemon     "${CONF_HOME}" \
     && mkdir -p                "${CONF_INSTALL}/conf" \
     && curl -Ls                "https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-${CONF_VERSION}.tar.gz" | tar -xz --directory "${CONF_INSTALL}" --strip-components=1 --no-same-owner \
-    && curl -Ls                "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-${MYSQL_CONJ_VERSION}.tar.gz" | tar -xz --directory "${CONF_INSTALL}/confluence/WEB-INF/lib" --strip-components=1 --no-same-owner "mysql-connector-java-${MYSQL_CONJ_VERSION}/mysql-connector-java-${MYSQL_CONJ_VERSION}-bin.jar" \
+    && curl -Ls                "https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-${MYSQL_CONJ_VERSION}.tar.gz" | tar -xz --directory "${CONF_INSTALL}/confluence/WEB-INF/lib" --strip-components=1 --no-same-owner \
     && chmod -R 700            "${CONF_INSTALL}/conf" \
     && chmod -R 700            "${CONF_INSTALL}/temp" \
     && chmod -R 700            "${CONF_INSTALL}/logs" \
@@ -43,7 +44,7 @@ RUN set -x \
         --delete               "Server/Service/Engine/Host/Context/@debug" \
                                "${CONF_INSTALL}/conf/server.xml" \
     && touch -d "@0"           "${CONF_INSTALL}/conf/server.xml" \
-    && chown daemon:daemon     "${JAVA_CACERTS}"
+    #&& chown daemon:daemon     "${JAVA_CACERTS}"
 
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but
