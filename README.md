@@ -19,8 +19,8 @@ It's possible to clone this repo and build the image on you're own machine, but 
 
 ## Versions
 Currently this repo have the following versions;
-* 6.15.7 (latest - not yet tested)
-* 6.15.6 (latest - tested)
+* 6.15.8 (latest - not yet tested)
+* 6.15.7 (latest - tested)
 
 
 Go to [Branches](https://github.com/containerstack/docker-confluence/branches) to see all different builds that are available.
